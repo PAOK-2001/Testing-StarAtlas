@@ -1,0 +1,3 @@
+[submodule "TestingStarAtlas/Plugins/FoundationKit"]
+	path = TestingStarAtlas/Plugins/FoundationKit
+	url = https://github.com/PAOK-2001/FoundationKit
