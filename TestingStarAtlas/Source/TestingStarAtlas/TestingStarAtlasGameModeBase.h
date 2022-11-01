@@ -13,5 +13,7 @@ UCLASS()
 class TESTINGSTARATLAS_API ATestingStarAtlasGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
+	UFUNCTION(Exec)
+	void testWebSocket(const FString& pubKey);
 	
 };
