@@ -10,6 +10,5 @@ void ATestingStarAtlasGameModeBase::testWebSocket(const FString& pubKey)
 {
 	UWalletAccount* demoWallet = NewObject<UWalletAccount>();
 	UFRequestManager_WB* SocketManager = Cast<UFRequestManager_WB>(GetGameInstance());
-
-	demoWallet->GetAcountBalance_WB(pubKey,SocketManager);
+	demoWallet->GetAcountBalance_WB(pubKey, SocketManager);
 }
