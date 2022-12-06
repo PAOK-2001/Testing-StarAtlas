@@ -17,5 +17,6 @@ class TESTINGSTARATLAS_API ATestingStarAtlasGameModeBase : public AGameModeBase
 	void testSub(const FString& pubKey);
 	UFUNCTION(Exec)
 	void testUnsub(const int ID);
-	
+	UFUNCTION(Exec)
+	void getAccountBalance(const int ID);
 };
