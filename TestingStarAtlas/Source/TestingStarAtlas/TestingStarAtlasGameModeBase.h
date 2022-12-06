@@ -14,6 +14,8 @@ class TESTINGSTARATLAS_API ATestingStarAtlasGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
 	UFUNCTION(Exec)
-	void testWebSocket(const FString& pubKey);
+	void testSub(const FString& pubKey);
+	UFUNCTION(Exec)
+	void testUnsub(const int ID);
 	
 };
