@@ -5,28 +5,43 @@
 
 #include "WalletAccount.h"
 #include "SolanaUtils/Wallet.h"
-#include "Network/UFRequestManager_WB.h"
-#include "Network/SubscriptionUtils.h"
+#include "Network/UGI_WebSocketManager.h"
+#include "Network/TransactionTracking.h"
 
-UWalletAccount* demoWallet = NewObject<UWalletAccount>();
+UWalletAccount* DemoWallet = NewObject<UWalletAccount>();
 
-void ATestingStarAtlasGameModeBase::testSub(const FString& pubKey)
+
+void ATestingStarAtlasGameModeBase::TestSub(const FString& pubKey)
 {
-	UFRequestManager_WB* SocketManager = Cast<UFRequestManager_WB>(GetGameInstance());
-	demoWallet->Sub2AccountInfo(pubKey, SocketManager);
+	UGI_WebSocketManager* SocketManager = Cast<UGI_WebSocketManager>(GetGameInstance());
+	DemoWallet->Sub2AccountInfo(pubKey, SocketManager);
 }
 
-void ATestingStarAtlasGameModeBase::testUnsub(const int ID)
+void ATestingStarAtlasGameModeBase::TestUnsub(const int ID)
 {
-	UFRequestManager_WB* SocketManager = Cast<UFRequestManager_WB>(GetGameInstance());
-	demoWallet->UnSub2AccountInfo(ID,SocketManager);
+	UGI_WebSocketManager* SocketManager = Cast<UGI_WebSocketManager>(GetGameInstance());
+	DemoWallet->UnSub2AccountInfo(ID,SocketManager);
 }
 
-void ATestingStarAtlasGameModeBase::getAccountBalance(const int ID)
+void ATestingStarAtlasGameModeBase::GetAccountBalance(const int ID)
 {
-	UFRequestManager_WB* SocketManager = Cast<UFRequestManager_WB>(GetGameInstance());
-	double accountVal = demoWallet->ReadSub(ID,SocketManager );
-	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Turquoise, FString::SanitizeFloat(accountVal));
+	UGI_WebSocketManager* SocketManager = Cast<UGI_WebSocketManager>(GetGameInstance());
+	double AccountVal = DemoWallet->ReadSub(ID,SocketManager );
+	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Turquoise, FString::SanitizeFloat(AccountVal));
 	
 }
+
+void ATestingStarAtlasGameModeBase::TrackTransaction(const FString& Signature)
+{
+	UGI_WebSocketManager* SocketManager = Cast<UGI_WebSocketManager>(GetGameInstance());
+	FTransactionTracker::Sub2Transaction(Signature, SocketManager);
+}
+
+void ATestingStarAtlasGameModeBase::GetErr(int ID)
+{
+	UGI_WebSocketManager* SocketManager = Cast<UGI_WebSocketManager>(GetGameInstance());
+	FTransactionTracker::GetTransactionErr(ID, SocketManager);
+}
+
+
 

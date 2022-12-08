@@ -13,10 +13,16 @@ UCLASS()
 class TESTINGSTARATLAS_API ATestingStarAtlasGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
+	
 	UFUNCTION(Exec)
-	void testSub(const FString& pubKey);
+	void TestSub(const FString& PubKey);
 	UFUNCTION(Exec)
-	void testUnsub(const int ID);
+	void TestUnsub(const int ID);
 	UFUNCTION(Exec)
-	void getAccountBalance(const int ID);
+	void GetAccountBalance(const int ID);
+	UFUNCTION(Exec)
+	void TrackTransaction(const FString& Signature);
+	UFUNCTION(Exec)
+	void GetErr(int ID);
+	
 };
